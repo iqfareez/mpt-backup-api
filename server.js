@@ -4,7 +4,11 @@ const router = jsonServer.router('db.json');
 const middlewares = jsonServer.defaults();
 const port = process.env.PORT || 3000;
 
+router.db._.id = "zone";
+
 server.use(middlewares);
 server.use(router);
 
-server.listen(port);
+server.listen(port, function () {
+    console.log(`Server started on port ${port}`);
+});
