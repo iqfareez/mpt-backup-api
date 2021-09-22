@@ -1,85 +1,75 @@
 <html>
-  <head>
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <title>JSON Server</title>
-  </head>
 
-  <body>
-    <header>
-      <div class="container">
-        <nav>
-          <ul>
-            <li class="title">
-              MPT Backup Server
-            </li>
-            <li>
-              <a href="https://github.com/users/typicode/sponsorship">
-                <i class="fas fa-heart"></i>GitHub Sponsors
-              </a>
-            </li>
-            <li>
-              <a href="https://my-json-server.typicode.com">
-                <i class="fas fa-burn"></i>My JSON Server
-              </a>
-            </li>
-            <li>
-              <a href="https://thanks.typicode.com">
-                <i class="far fa-laugh"></i>Supporters
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-    <main>
-      <div class="container">
-        <h1>Congrats!</h1>
-        <p>
-          You're successfully running JSON Server
-          <br />
-          ✧*｡٩(ˊᗜˋ*)و✧*｡
-        </p>
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" />
+  <link rel="stylesheet" href="style.css" />
+  <title>MPT backup JSON Server</title>
+</head>
 
-        <div id="resources"></div>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <ul>
+          <li class="title">
+            MPT Backup Server
+          </li>
+          <li>
+            <a href="https://github.com/iqfareez">
+              <i class="fab fa-github"></i>GitHub (iqfareez)
+            </a>
+          </li>
+          <li>
+            <a href="https://play.google.com/store/apps/details?id=live.iqfareez.waktusolatmalaysia">
+              <i class="fab fa-google-play"></i>Get MPT app
+            </a>
+          </li>
 
-        <p>
-          To access and modify resources, you can use any HTTP method:
-        </p>
-        <p>
-          <code>GET</code>
-          <code>POST</code>
-          <code>PUT</code>
-          <code>PATCH</code>
-          <code>DELETE</code>
-          <code>OPTIONS</code>
-        </p>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <h1>Welcome!</h1>
+      <p>
+        First of all, if you ever find this page, take note that this API was not meant for public use. This API will be
+        called in Malaysia Waktu Solat app if JAKIM's API is not available at that moment
 
-        <div id="custom-routes"></div>
+      </p>
+      <p><b>Last updated:</b>
+        <i>Wed, 22 Sep 2021 01:46:43</i>
+      </p>
 
-        <h1>Documentation</h1>
-        <p>
-          <a href="https://github.com/typicode/json-server">
-            README
-          </a>
-        </p>
-      </div>
-    </main>
+      <div id="resources"></div>
 
-    <footer>
-      <div class="container">
-        <p>
-          To replace this page, create a
-          <code>./public/index.html</code> file.
-        </p>
-      </div>
-    </footer>
+      <p>
+        To access resources, you can any HTTP method:
+        <code>GET</code>
+      </p>
 
-    <script src="script.js"></script>
-  </body>
+      <h1>Usage</h1>
+      <p>
+        To get same response as JAKIM'S API, use:
+        <code>https://mpt-backup-api.herokuapp.com/solat/<b>ZONE</b></code>
+
+      </p>
+
+      <!-- <div id="custom-routes"></div> -->
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>
+        © 2021 Muhammad Fareez Iqmal
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
 </html>

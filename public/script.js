@@ -11,13 +11,13 @@ function ResourceList({ db }) {
   return `
     <ul>
       ${Object.keys(db)
-        .map(name =>
-          ResourceItem({
-            name,
-            length: Array.isArray(db[name]) && db[name].length
-          })
-        )
-        .join('')}
+      .map(name =>
+        ResourceItem({
+          name,
+          length: Array.isArray(db[name]) && db[name].length
+        })
+      )
+      .join('')}
     </ul>
   `
 }
@@ -51,26 +51,26 @@ function CustomRoutesBlock({ customRoutes }) {
         <h1>Custom Routes</h1>
         <table>
           ${rules
-            .map(
-              rule =>
-                `<tr>
+        .map(
+          rule =>
+            `<tr>
               <td>${rule}</td>
               <td><code>⇢</code> ${customRoutes[rule]}</td>
             </tr>`
-            )
-            .join('')}
+        )
+        .join('')}
         </table>
       </div>
     `
   }
 }
 
-window
-  .fetch('__rules')
-  .then(response => response.json())
-  .then(
-    customRoutes =>
-      (document.getElementById('custom-routes').innerHTML = CustomRoutesBlock({
-        customRoutes
-      }))
-  )
+// window
+//   .fetch('__rules')
+//   .then(response => response.json())
+//   .then(
+//     customRoutes =>
+//       (document.getElementById('custom-routes').innerHTML = CustomRoutesBlock({
+//         customRoutes
+//       }))
+//   )
