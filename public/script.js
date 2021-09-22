@@ -43,6 +43,17 @@ window
       (document.getElementById('resources').innerHTML = ResourcesBlock({ db }))
   )
 
+window
+  .fetch('log.json')
+  .then(response => response.json())
+  .then(
+    log =>
+    (document.getElementById('last-run').innerHTML =
+      `
+      <p><b>Data last updated:</b>&nbsp;<i>${log['fetcher_last_run']}</i></p>
+      `)
+  )
+
 function CustomRoutesBlock({ customRoutes }) {
   const rules = Object.keys(customRoutes)
   if (rules.length) {

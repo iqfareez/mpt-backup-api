@@ -88,8 +88,16 @@ while len(failed_jakim_code) != 0:
 
         time.sleep(1)  # Pause 1 sec before the next api call
 
+fetch_finish = time.strftime("%a, %d %b %Y %H:%M:%S")
+print(f'Fetching finish at {fetch_finish}')
+
 with open('db.json', 'w') as outfile:
     json.dump(data, outfile)
     print('\nFinish writing to db.json')
 
-print(f'Operation finish at {time.strftime("%a, %d %b %Y %H:%M:%S")}')
+log = {}
+log['fetcher_last_run'] = fetch_finish
+
+with open('public/log.json', 'w') as outfile:
+    json.dump(log, outfile)
+    print('Log is written to log.json')
