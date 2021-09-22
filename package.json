@@ -1,7 +1,7 @@
 {
-  "name": "burger-api",
+  "name": "mpt-backup-api",
   "version": "1.0.0",
-  "description": "My Burger Api",
+  "description": "MPT Backup API",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,14 +9,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kubowania/burger-api.git"
+    "url": "git+https://github.com/iqfareez/mpt-backup-api.git"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/kubowania/burger-api/issues"
-  },
-  "homepage": "https://github.com/kubowania/burger-api#readme",
+  "homepage": "https://mpt-backup-api.herokuapp.com/",
   "dependencies": {
     "json-server": "^0.16.2"
   }
