@@ -1,5 +1,7 @@
 import json
 import time
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 import requests
 
@@ -16,53 +18,23 @@ jakim_code = [
     "WLY01", "WLY02"
 ]  # Total 58
 
-failed_jakim_code = []
-
 data = {}
 data['solat'] = []
 
 print(f'Total of {len(jakim_code)}')
 print('\nStarting\n')
 
-# Iterate each of the JAKIM code
-for zone in jakim_code:
-
-    params = {
-        'r': 'esolatApi/takwimsolat',
-        'period': 'month',
-        'zone': zone,
-    }
-
-    try:
-        response = requests.get(reqUrl, params=params)
-        json_response = response.json()
-
-        # Only put into json if everything's fine
-        if (response.status_code == 200) and json_response['status'] == 'OK!':
-            print(f"{zone} : {json_response['status']}")
-            data['solat'].append(json_response)
-        else:
-            print(f'{zone} : Failed ({response.status_code})')
-            failed_jakim_code.append(zone)
-    except:
-        # Catch
-        print(f'{zone} : Failed due to exception')
-        failed_jakim_code.append(zone)
-
-    time.sleep(1)  # Pause 1 sec before the next api call
-
-retryCount = 0
+attempt_count = 0
 
 # Retry the failed request until all filled up
-while len(failed_jakim_code) != 0:
-    failed = '", "'.join(x for x in failed_jakim_code)
-    print(f'\nFailed to fetch: "{failed}"')
-
-    retryCount += 1
-    print(f'\nRetrying failed requests. Attempt #{retryCount}\n')
+while len(jakim_code) != 0:
+    if (attempt_count > 0):
+        failed = '", "'.join(x for x in jakim_code)
+        print(f'\nFailed to fetch: "{failed}"')
+        print(f'\nRetrying failed requests. Attempt #{attempt_count}\n')
 
     # Iterate each of the JAKIM code
-    for zone in failed_jakim_code:
+    for zone in jakim_code:
 
         params = {
             'r': 'esolatApi/takwimsolat',
@@ -79,25 +51,40 @@ while len(failed_jakim_code) != 0:
                     == 200) and json_response['status'] == 'OK!':
                 print(f"{zone} : {json_response['status']}")
                 data['solat'].append(json_response)
-                failed_jakim_code.remove(zone)
+                jakim_code.remove(zone)
             else:
                 print(f'{zone} : Failed ({response.status_code})')
         except:
             # Catch
             print(f'{zone} : Failed due to exception')
 
-        time.sleep(1)  # Pause 1 sec before the next api call
+        # Pause 1.5 secs before the next api call
+        # to prevent 'ddos' to their server
+        time.sleep(1.5)
 
-fetch_finish = time.strftime("%a, %d %b %Y %H:%M:%S")
-print(f'Fetching finish at {fetch_finish}')
+    attempt_count += 1
 
+# Don't be afraid, this block of code just for logging time
+fetch_finish_myt = datetime.now(ZoneInfo('Asia/Kuala_Lumpur'))
+current_month = fetch_finish_myt.strftime("%m")
+current_year = fetch_finish_myt.strftime("%Y")
+fetch_finish_myt = fetch_finish_myt.strftime(
+    "%a, %d %b %Y %H:%M:%S MYT")  # format MYT time
+fetch_finish_utc = time.strftime("%a, %d %b %Y %H:%M:%S %Z")  # format UTC Time
+print(f'\nFetching finish at {fetch_finish_myt}')
+print(f'Fetching finish at {fetch_finish_utc}')
+
+# writing all location data to file
 with open('db.json', 'w') as outfile:
-    json.dump(data, outfile)
+    json.dump(data, outfile, indent=2)
     print('\nFinish writing to db.json')
 
 log = {}
-log['fetcher_last_run'] = fetch_finish
+log['fetcher_last_run'] = fetch_finish_myt
+log['valid_month'] = int(current_month)
+log['valid_year'] = int(current_year)
 
+# writing log
 with open('public/log.json', 'w') as outfile:
-    json.dump(log, outfile)
+    json.dump(log, outfile, indent=2)
     print('Log is written to log.json')

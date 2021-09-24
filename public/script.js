@@ -29,7 +29,6 @@ function NoResources() {
 function ResourcesBlock({ db }) {
   return `
     <div>
-      <h1>Resources</h1>
       ${Object.keys(db).length ? ResourceList({ db }) : NoResources()}
     </div>
   `
@@ -47,11 +46,28 @@ window
   .fetch('log.json')
   .then(response => response.json())
   .then(
-    log =>
-    (document.getElementById('last-run').innerHTML =
+    function (log) {
+      // get current month and year
+      var d = new Date();
+      var month = d.getMonth() + 1; // month in value 0 to 11
+      var year = d.getFullYear();
+
+      // get month from json
+      var logMonth = log['valid_month']
+      var logYear = log['valid_year']
+      var statusBadge = `<span
+      class="badge bg-warning text-dark">Unuseable</span>`
+
+      // check if valid
+      if (logMonth == month && logYear == year) {
+        statusBadge = `<span
+        class="badge bg-success">Healthy</span>`
+      }
+      return document.getElementById('last-run').innerHTML =
+        `
+        <b>Last updated:</b>&nbsp;<i>${log['fetcher_last_run']}</i>&nbsp;&nbsp;${statusBadge}
       `
-      <p><b>Data last updated:</b>&nbsp;<i>${log['fetcher_last_run']}</i></p>
-      `)
+    }
   )
 
 function CustomRoutesBlock({ customRoutes }) {

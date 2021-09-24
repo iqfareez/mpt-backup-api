@@ -1,76 +1,92 @@
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" />
-  <link rel="stylesheet" href="style.css" />
-  <title>MPT backup JSON Server</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.88.1">
+  <title>MPT JAKIM Backup API</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
 </head>
 
+<script>
+  console.log("%c👀", "font-size: 140px");
+</script>
+
 <body>
-  <header>
-    <div class="container">
-      <nav>
-        <ul>
-          <li class="title">
-            MPT Backup Server
-          </li>
-          <li>
-            <a href="https://github.com/iqfareez">
-              <i class="fab fa-github"></i>GitHub (iqfareez)
-            </a>
-          </li>
-          <li>
-            <a href="https://play.google.com/store/apps/details?id=live.iqfareez.waktusolatmalaysia">
-              <i class="fab fa-google-play"></i>Get MPT app
-            </a>
-          </li>
 
-        </ul>
-      </nav>
-    </div>
-  </header>
-  <main>
-    <div class="container">
-      <h1>Welcome!</h1>
-      <p>
-        First of all, if you ever find this page, take note that this API was not meant for public use. This API will be
-        called in Malaysia Waktu Solat app if JAKIM's API is not available at that moment
+  <div class="col-lg-8 mx-auto p-3 py-md-5">
+    <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+        <span class="fs-4">MPT JAKIM Backup API</span>
+      </a>
+    </header>
 
+    <main>
+      <h1>Welcome</h1>
+      <p class="fs-5 col-md-8">First of all, if you ever find this page, take note that this API was not meant for
+        public use. This API is used
+        in Malaysia Prayer Time <b>Android</b> app if JAKIM's API is unreachable at that moment.
       </p>
 
-      <div id="last-run"></div>
-      <p>Data is ONLY valid if the last updated date is in the same month</p>
-      </p>
+      <div class="mb-5">
+        <a href="https://play.google.com/store/apps/details?id=live.iqfareez.waktusolatmalaysia"
+          class="btn btn-primary">Download MPT app</a>
+        <a href="https://iqfareez.github.io/jakim-esolat-status/" class="btn btn-secondary">JAKIM E-solat status</a>
+      </div>
 
-      <div id="resources"></div>
+      <hr class="col-3 col-md-2 mb-5">
 
-      <p>
-        To access resources, you can any HTTP method:
-        <code>GET</code>
-      </p>
+      <div class="row g-5">
+        <div class="col-md-6">
+          <h2>Data health </h2>
+          <!-- <span class="badge bg-primary">Primary</span> -->
+          <p>Prayer times data will be refresh from JAKIM's server on a monthly intervals. Fetcher is scheduled to run
+            (typically) on
+            8.00 am on
+            the
+            first
+            day of the month.</p>
+          <p>Hence, this backup database is consider <b>valid on the same month</b> with the fetcher last run.</p>
+          <div id="last-run"></div>
+        </div>
 
-      <h1>Usage</h1>
-      <p>
-        To get same response as JAKIM'S API, use:
-        <code>https://mpt-backup-api.herokuapp.com/solat/<b>ZONE</b></code>
+        <div class="col-md-6">
+          <h2>Resources</h2>
+          <div id="resources"></div>
+          <p>Example usage: <code>https://mpt-backup-api.herokuapp.com/solat/SGR01</code></p>
 
-      </p>
+        </div>
 
-      <!-- <div id="custom-routes"></div> -->
+        <div class="col-md-6">
+          <h2>Links</h2>
+          <p>Read more detailed instructions and documentation on using or contributing to Bootstrap.</p>
+          <ul>
+            <li><a href="https://github.com/iqfareez/mpt-backup-api">Source (and fetcher python script)</a>
+            </li>
+            <li><a href="https://github.com/typicode/json-server"">json-server - Backbone of this API</a></li>
+          </ul>
+        </div>
+      </div>
+    </main>
+    <footer class=" pt-5 my-5 text-muted border-top">
+                Muhammad Fareez Iqmal &middot; &copy; 2021
+                </footer>
+        </div>
 
-    </div>
-  </main>
 
-  <footer>
-    <div class="container">
-      <p>
-        © 2021 Muhammad Fareez Iqmal
-      </p>
-    </div>
-  </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+          crossorigin="anonymous"></script>
 
-  <script src="script.js"></script>
+        <script src="script.js"></script>
+
 </body>
 
 </html>
