@@ -1,4 +1,4 @@
-name: api fetcher
+name: 'Fetch latest data'
 
 on:
   workflow_dispatch:

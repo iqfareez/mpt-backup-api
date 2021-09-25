@@ -1,4 +1,4 @@
-name: heroku awake
+name: 'Awake Heroku app'
 
 # Controls when the workflow will run
 on:
