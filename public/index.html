@@ -4,14 +4,33 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-  <meta name="generator" content="Hugo 0.88.1">
+  <meta name="description" content="A 'mirror' to JAKIM e-solat API">
   <title>MPT JAKIM Backup API</title>
 
   <!-- Bootstrap core CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+  <!-- Primary Meta Tags -->
+  <title>MPT JAKIM Backup API</title>
+  <meta name="title" content="MPT JAKIM Backup API">
+  <meta name="description" content="Backup endpoint if JAKIM is down.">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mpt-backup-api.herokuapp.com/">
+  <meta property="og:title" content="MPT JAKIM Backup API">
+  <meta property="og:description" content="Backup endpoint if JAKIM is down.">
+  <meta property="og:image"
+    content="https://res.cloudinary.com/iqfareez-cloud/image/upload/v1632756084/metatags/iium_service_status_tsexl9.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://mpt-backup-api.herokuapp.com/">
+  <meta property="twitter:title" content="MPT JAKIM Backup API">
+  <meta property="twitter:description" content="Backup endpoint if JAKIM is down.">
+  <meta property="twitter:image"
+    content="https://res.cloudinary.com/iqfareez-cloud/image/upload/v1632756084/metatags/iium_service_status_tsexl9.png">
 
 </head>
 
@@ -30,15 +49,16 @@
 
     <main>
       <h1>Welcome</h1>
-      <p class="fs-5 col-md-8">First of all, if you ever find this page, take note that this API was not meant for
-        public use. This API is used
-        in Malaysia Prayer Time <b>Android</b> app if JAKIM's API is unreachable at that moment.
+      <p class="fs-5 col-md-8">This API was not meant for public use. It is designed for the <b>Malaysia
+          Prayer Time app</b> if <a href="https://www.e-solat.gov.my/" target="_blank">JAKIM</a>'s API is unreachable at
+        that moment. However, there is no harm in using them in
+        small/medium applications.
       </p>
 
       <div class="mb-5">
         <a href="https://play.google.com/store/apps/details?id=live.iqfareez.waktusolatmalaysia"
-          class="btn btn-primary">Download MPT app</a>
-        <a href="https://iqfareez.github.io/jakim-esolat-status/" class="btn btn-secondary">JAKIM E-solat status</a>
+          class="btn btn-primary m-1">Download MPT app</a>
+        <a href="https://iqfareez.github.io/jakim-esolat-status/" class="btn btn-secondary m-1">JAKIM E-solat status</a>
       </div>
 
       <hr class="col-3 col-md-2 mb-5">
@@ -47,46 +67,47 @@
         <div class="col-md-6">
           <h2>Data health </h2>
           <!-- <span class="badge bg-primary">Primary</span> -->
-          <p>Prayer times data will be refresh from JAKIM's server on a monthly intervals. Fetcher is scheduled to run
-            (typically) on
-            8.00 am on
-            the
-            first
-            day of the month.</p>
-          <p>Hence, this backup database is consider <b>valid on the same month</b> with the fetcher last run.</p>
+          <p>Prayer times data will be refresh from JAKIM's server at monthly intervals. Fetcher is scheduled to run
+            (typically) at 8.00 am on the first day of the month.</p>
+          <p>Hence, this backup database is considered <b>valid in the same month</b> as the fetcher last run date.</p>
           <div id="last-run"></div>
         </div>
 
         <div class="col-md-6">
           <h2>Resources</h2>
           <div id="resources"></div>
-          <p>Example usage: <code>https://mpt-backup-api.herokuapp.com/solat/SGR01</code></p>
-
+          <p>Example: <kbd>GET</kbd>&nbsp;<code>https://mpt-backup-api.herokuapp.com/solat/SGR01</code></p>
+          <p>where <code>SGR01</code> is the location code. View full list <a href="./jakimzones.html"> here</a>.</p>
         </div>
 
         <div class="col-md-6">
           <h2>Links</h2>
-          <p>Read more detailed instructions and documentation on using or contributing to Bootstrap.</p>
+          <p>If you're eager to know more</p>
           <ul>
-            <li><a href="https://github.com/iqfareez/mpt-backup-api">Source (and fetcher python script)</a>
+            <li><a href="https://www.e-solat.gov.my/" target="_blank">Portal e-solat JAKIM (Data source)</a>
             </li>
-            <li><a href="https://github.com/typicode/json-server"">json-server - Backbone of this API</a></li>
+            <li><a href="https://github.com/iqfareez/mpt-backup-api" target="_blank">Source</a>
+            </li>
+            <li><a href="https://github.com/typicode/json-server" target="_blank">json-server - Backbone of this API</a>
+            </li>
+            <li><a href="https://github.com/iqfareez/app_waktu_solat_malaysia/pull/82#issuecomment-927835374"
+                target="_blank">Why this website even exist?</a>
+            </li>
           </ul>
         </div>
       </div>
     </main>
     <footer class=" pt-5 my-5 text-muted border-top">
-                Muhammad Fareez Iqmal &middot; &copy; 2021
-                </footer>
-        </div>
+      Muhammad Fareez Iqmal &middot; &copy; 2021 <br> <a target="_blank" href="https://twitter.com/iqfareez">Twitter</a>
+      <a target="_blank" href="http://github.com/iqfareez">GitHub</a>
+    </footer>
+  </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-          crossorigin="anonymous"></script>
-
-        <script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 
 </html>
