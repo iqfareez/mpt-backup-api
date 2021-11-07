@@ -37,7 +37,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: main
-      - name: HTTP Request Action
+      - name: telegram notify
         uses: fjogeleit/http-request-action@v1.8.1
         with:
           url: 'https://api.telegram.org/bot${{secrets.TELE_BOT_API_KEY}}/sendMessage'
