@@ -42,21 +42,16 @@ while len(jakim_code) != 0:
             'zone': zone,
         }
 
-        try:
-            response = requests.get(reqUrl, params=params)
-            json_response = response.json()
+        response = requests.get(reqUrl, params=params)
+        json_response = response.json()
 
-            # Only put into json if everything's fine
-            if (response.status_code
-                    == 200) and json_response['status'] == 'OK!':
-                print(f"{zone} : {json_response['status']}")
-                data['solat'].append(json_response)
-                jakim_code.remove(zone)
-            else:
-                print(f'{zone} : Failed ({response.status_code})')
-        except:
-            # Catch
-            print(f'{zone} : Failed due to exception')
+        # Only put into json if everything's fine
+        if (response.status_code == 200) and json_response['status'] == 'OK!':
+            print(f"{zone} : {json_response['status']}")
+            data['solat'].append(json_response)
+            jakim_code.remove(zone)
+        else:
+            print(f'{zone} : Failed ({response.status_code})')
 
         # Pause 1.5 secs before the next api call
         # to prevent 'ddos' to their server
