@@ -1,4 +1,5 @@
 [![api fetcher](https://github.com/iqfareez/mpt-backup-api/actions/workflows/fetcher.yml/badge.svg)](https://github.com/iqfareez/mpt-backup-api/actions/workflows/fetcher.yml)
+[![Deploy](https://github.com/iqfareez/mpt-backup-api/actions/workflows/deploy.yml/badge.svg)](https://github.com/iqfareez/mpt-backup-api/actions/workflows/deploy.yml)
 
 # mpt-backup-api
 
@@ -13,7 +14,7 @@ _Make sure node is installed on your machine_
 
 `db.json` database is created from a **python** script. Supposed to run once every month via GitHub [action](https://github.com/iqfareez/mpt-backup-api/actions/workflows/fetcher.yml).
 
-Build and hosted by [Heroku](https://www.heroku.com/)
+Build and served by [Heroku](https://www.heroku.com/)
 
 ## Honourable mentions
 
