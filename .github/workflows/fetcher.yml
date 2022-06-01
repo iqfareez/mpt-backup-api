@@ -33,6 +33,12 @@ jobs:
           git add -A
           git commit -m ":card_file_box: update db `date +"%m-%Y"`" -a
 
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: 'mpt-backup-api' #Must be unique in Heroku
+          heroku_email: 'iqmal3@outlook.com'
+
       - name: push changes
         uses: ad-m/github-push-action@v0.6.0
         with:
