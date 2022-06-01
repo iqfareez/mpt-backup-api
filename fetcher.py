@@ -4,6 +4,9 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 
 import requests
+import urllib3
+
+urllib3.disable_warnings()  # disable certificate error warning
 
 reqUrl = "https://www.e-solat.gov.my/index.php"
 
@@ -42,7 +45,7 @@ while len(jakim_code) != 0:
             'zone': zone,
         }
 
-        response = requests.get(reqUrl, params=params)
+        response = requests.get(reqUrl, params=params, verify=False)
         json_response = response.json()
 
         # Only put into json if everything's fine

@@ -5,7 +5,7 @@
 
 **Attention** :exclamation: This API is meant to be used by the [Malaysia Prayer Time app](https://github.com/iqfareez/app_waktu_solat_malaysia) **as a backup** if JAKIM's API is unreachable.
 
-To **start a local server**, run `npm install`, then `npm start` and go to `localhost:3000`.
+To **start a local server**, run `npm install`, then `npm start`, and go to `localhost:3000`.
 _Make sure node is installed on your machine_
 
 ## How it works?
