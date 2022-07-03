@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/iqfareez/mpt-backup-api.git"
   },
-  "author": "",
+  "author": "iqfareez",
   "license": "ISC",
   "homepage": "https://mpt-backup-api.herokuapp.com/",
   "dependencies": {
