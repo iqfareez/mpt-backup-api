@@ -7,25 +7,13 @@
 
 **Attention** :exclamation: This API is meant to be used by the [Malaysia Prayer Time app](https://github.com/iqfareez/app_waktu_solat_malaysia) **as a backup** if JAKIM's API is unreachable.
 
-## To run a local server
+## To run
 
-Prerequisite: **Node**
+### Pull the latest data from JAKIM.
 
-```
-npm install
-```
+Prerequisites: **Node** & **Python 3.10**
 
-Then
-
-```
-npm start
-```
-
-## To run the fetcher script
-
-Prerequisites: **Python 3.10**
-
-> **⚠️ Careful:** Don't run too much, for one run, it will poll this data from JAKIM server about 58 times _(number of zones, it could be more than that)_ every 1.5 secs.
+> **⚠️ Careful:** Don't run too much, for one run, it will poll this data from JAKIM server about 58 times _(number of zones, it could be more than that)_ every 1.5 secs. It will retry when fail getting a data for a zone.
 
 Install required packages
 
@@ -37,6 +25,18 @@ Run the fetcher
 
 ```
 py fetcher.py
+```
+
+### Start local server
+
+```
+npm install
+```
+
+Then
+
+```
+npm start
 ```
 
 ## Put it togother, how does it works?
