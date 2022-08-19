@@ -1,22 +1,59 @@
-[![api fetcher](https://github.com/iqfareez/mpt-backup-api/actions/workflows/fetcher.yml/badge.svg)](https://github.com/iqfareez/mpt-backup-api/actions/workflows/fetcher.yml)
-[![Deploy](https://github.com/iqfareez/mpt-backup-api/actions/workflows/deploy.yml/badge.svg)](https://github.com/iqfareez/mpt-backup-api/actions/workflows/deploy.yml)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+[![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)](#put-it-togother-how-does-it-works)
+![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
 
 # mpt-backup-api
 
 **Attention** :exclamation: This API is meant to be used by the [Malaysia Prayer Time app](https://github.com/iqfareez/app_waktu_solat_malaysia) **as a backup** if JAKIM's API is unreachable.
 
-To **start a local server**, run `npm install`, then `npm start`, and go to `localhost:3000`.
-_Make sure node is installed on your machine_
+## To run a local server
 
-## How it works?
+Prerequisite: **Node**
 
-![mpt backup api process drawio](https://user-images.githubusercontent.com/60868965/134902938-35a365b2-7314-4b97-86e8-8b447e2d0db4.png)
+```
+npm install
+```
 
-`db.json` database is created from a **python** script. Supposed to run once every month via GitHub [action](https://github.com/iqfareez/mpt-backup-api/actions/workflows/fetcher.yml).
+Then
 
-Build and served by [Heroku](https://www.heroku.com/)
+```
+npm start
+```
 
-## Honourable mentions
+## To run the fetcher script
+
+Prerequisites: **Python 3.10**
+
+> **⚠️ Careful:** Don't run too much, for one run, it will poll this data from JAKIM server about 58 times _(number of zones, it could be more than that)_ every 1.5 secs.
+
+Install required packages
+
+```
+pip install requests urllib3
+```
+
+Run the fetcher
+
+```
+py fetcher.py
+```
+
+## Put it togother, how does it works?
+
+```mermaid
+flowchart TD
+    A{{OpenNotifyAPI}}
+    A <--> C
+    C[[Fetch latest prayer data]] --- D[(db.json)] & E[(log.json)] --> F(Commit & push)
+    F -->|Heroku build triggered| G[Deployed to Heroku]
+```
+
+> This workflow will trigger automatically on the first day of the month via [GitHub Actions](https://github.com/iqfareez/mpt-backup-api/actions/workflows/fetcher.yml).
+
+[![api fetcher](https://github.com/iqfareez/mpt-backup-api/actions/workflows/fetcher.yml/badge.svg)](https://github.com/iqfareez/mpt-backup-api/actions/workflows/fetcher.yml)
+
+## References
 
 1. [The idea behind automatic fetching and deploy using Python and GitHub](https://canovasjm.netlify.app/2020/11/29/github-actions-run-a-python-script-on-schedule-and-commit-changes/)
 2. [The idea of this simple API architecture](https://youtu.be/FLnxgSZ0DG4)
