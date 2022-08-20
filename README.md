@@ -13,7 +13,7 @@
 
 Prerequisites: **Node** & **Python 3.10**
 
-> **⚠️ Careful:** Don't run too much, for one run, it will poll this data from JAKIM server about 58 times _(number of zones, it could be more than that)_ every 1.5 secs. It will retry when fail getting a data for a zone.
+> **⚠️ Careful:** Don't run too much (Don't DDOS JAKIM). For each run, it will poll this data from JAKIM server about 58 times _(number of zones, it could be more than that due to retrying)_ every 1.5 secs.
 
 Install required packages
 
@@ -43,7 +43,7 @@ npm start
 
 ```mermaid
 flowchart TD
-    A{{OpenNotifyAPI}}
+    A{{JAKIM API}}
     A <--> C
     C[[Fetch latest prayer data]] --- D[(db.json)] & E[(log.json)] --> F(Commit & push)
     F -->|Heroku build triggered| G[Deployed to Heroku]
