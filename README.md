@@ -43,7 +43,7 @@ npm start
 
 ```mermaid
 flowchart TD
-    A{{OpenNotifyAPI}}
+    A{{JAKIM}}
     A <--> C
     C[[Fetch latest prayer data]] --- D[(db.json)] & E[(log.json)] --> F(Commit & push)
     F -->|Heroku build triggered| G[Deployed to Heroku]
