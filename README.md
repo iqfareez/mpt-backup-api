@@ -5,6 +5,8 @@
 
 # mpt-backup-api
 
+# Announcement: This repo will be discountinued. Please visit the replacement repo [mpt-server](https://github.com/mptwaktusolat/mpt-server)
+
 **Attention** :exclamation: This API is meant to be used by the [Malaysia Prayer Time app](https://github.com/iqfareez/app_waktu_solat_malaysia) **as a backup** if JAKIM's API is unreachable.
 
 ## To run
